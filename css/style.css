@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+.container {
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ecf0f1;
+}
+.content {
+    width: 960px;
+    height: 50%;
+    align-items: center;
+    position: relative;
+    border-radius: 15px;
+    background-color: #fff;
+}
+.content::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #58af9b;
+    width: 42%;
+    height: 100%;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.content-first {
+    display: flex;
+    justify-content: space-around;
+}
+
+.first-column {
+    flex: 1 0 auto;
+    text-align: center;
+    z-index: 999;
+}
+.welcome-title,
+.greeting-title {
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.welcome-description,
+.greeting-description {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 25px;
+}
+.btn {
+    background-color: transparent;
+    border: 1px solid #fff;
+    cursor: pointer;
+    color: #fff;
+    padding: 10px 50px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: bold;
+}
+.btnwelcome,
+.btngreeting {
+    margin-top: 1rem;
+}
+.btnwelcome:hover,
+.btngreeting:hover {
+    background-color: #fff;
+    color: #58af9b;
+    transition: all .5s;
+}
+
+/*second column*/
+
+.second-column {
+    flex: 2 0 auto;
+}
+.create-account {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.account-title,
+.signin-title {
+    color: #58af9b;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.social-media {
+    margin: 1rem 0;
+}
+.social-media-list {
+    display: flex;
+}
+.social-media-item {
+    list-style-type: none;
+    color: #95a5a6;
+    border: 1px solid #bdc3c7;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    margin-left: 1rem;
+    cursor: pointer;
+    transition: all .3s;
+}
+.social-media-item:hover {
+    background-color: #58af9b;
+    border: none;
+    color: #fff;
+}
+.social-media-item:first-child {
+    margin-left: 0;
+}
+.account-description,
+.signin-description {
+    color: #7f8c8d;
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+.form-create-account,
+.form-signin {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+}
+.input-field {
+    background-color: #ecf0f1;
+    border: none;
+    padding: 15px 40px;
+    margin-bottom: .5rem;
+    width: 100%;
+}
+.input-field::placeholder {
+    text-transform: capitalize;
+}
+.form-create-account label:hover .icon-input {
+    transform: scale(1.2);
+    transition: transform .8s;
+}
+.icon-input {
+    position: absolute;
+    height: 45px;
+    line-height: 45px !important;
+    color: #7f8c8d;
+    padding-left: 15px;
+}
+.btnsignup {
+    background-color: #58af9b;
+    color: #fff;
+    border-radius: 15px;
+    width: 50%;
+    align-self: center;   
+    margin-top: 1rem;
+    border: none;
+}
+.btnsignup:hover {
+    border: 1px solid #58af9b;
+    background-color: transparent;
+    color: #58af9b;
+    transition: all .5s;
+}
+
+/* sign in CSS*/
+.content-second {
+    opacity: 0;
+    position: absolute;
+}
+.signin-js .content-second {
+    display: flex;
+    opacity: 1;
+    animation: disappear .8s;
+}
+.signout-js .content-first {
+    opacity: 1;
+    animation: disappear .8s;
+}
+.signin-js .content::before {
+    content: "";
+    position: absolute;
+    background-color: #58af9b;
+    top: 0;
+    width: 42%;
+    height: 100%;
+    left: 557px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    animation: slidein .8s;
+}
+.signout-js .content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #58af9b;
+    width: 42%;
+    height: 100%;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    animation: slideout .8s;
+    z-index: 100;
+}
+@keyframes slidein {
+    from {left: 0;}
+    50% {left: 250px}
+    to {left: 557px}
+}
+@keyframes slideout {
+    from {left: 557px;}
+    50% {left: 250px}
+    to {left: 0px}
+}
+@keyframes disappear {
+    from {opacity: 0}
+    25% {opacity: .3}
+    50% {opacity: .5}
+    to {opacity: 1}
+}
+@keyframes appear {
+    from {opacity: 1}
+    25% {opacity: .5}
+    50% {opacity: .3}
+    to {opacity: 0}
+}
+.signin-js .content-first {
+    opacity: 0;
+}
+.first-column-signin {
+    flex: 1 0 auto;
+}
+.signin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.signin-title {
+    text-align: center;
+}
+.forgotpassword {
+    text-align: center;
+}
+.second-column-greeting {
+    flex: 1 0 auto;
+    text-align: center;
+    z-index: 10;
+}
