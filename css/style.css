@@ -4,12 +4,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: transparent;
 }
 body {
     font-family: 'Open Sans', sans-serif;
 }
 .container {
-    border: 1px solid red;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,7 +30,7 @@ body {
     top: 0;
     left: 0;
     background-color: #58af9b;
-    width: 42%;
+    width: 40%;
     height: 100%;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
@@ -39,7 +39,6 @@ body {
     display: flex;
     justify-content: space-around;
 }
-
 .first-column {
     flex: 1 0 auto;
     text-align: center;
@@ -85,6 +84,10 @@ body {
 
 .second-column {
     flex: 2 0 auto;
+    z-index: 99;
+    position: relative;
+    left: 0;
+    transition: left .8s;
 }
 .create-account {
     display: flex;
@@ -139,8 +142,8 @@ body {
     flex-direction: column;
     width: 55%;
 }
-.input-field {
-    background-color: #ecf0f1;
+input.input-field {
+    background-color: #ecf0f1 !important;
     border: none;
     padding: 15px 40px;
     margin-bottom: .5rem;
@@ -176,33 +179,43 @@ body {
     transition: all .5s;
 }
 
-/* sign in CSS*/
+/* SLIDE */
 .content-second {
-    opacity: 0;
     position: absolute;
+    opacity: 0;
+}
+.signin-js .second-column {
+    opacity: 0;
+    left: -40%;
+    transition: left .8s;
 }
 .signin-js .content-second {
+    opacity: 1;
+    position: relative; 
     display: flex;
-    opacity: 1;
-    animation: disappear .8s;
 }
-.signout-js .content-first {
-    opacity: 1;
-    animation: disappear .8s;
+.signin-js .content-first {
+    position: absolute;
+    opacity: 0;
+}
+.signin-js .first-column-signin {
+    left: 0;
+    transition: left .8s;
 }
 .signin-js .content::before {
     content: "";
     position: absolute;
     background-color: #58af9b;
     top: 0;
-    width: 42%;
+    width: 39.5%;
     height: 100%;
-    left: 557px;
+    left: 60.5%;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    animation: slidein .8s;
+    animation: slidein 1.3s ease-out;
+    z-index: 10;
 }
 .signout-js .content::before {
     content: "";
@@ -210,40 +223,62 @@ body {
     top: 0;
     left: 0;
     background-color: #58af9b;
-    width: 42%;
+    width: 39.5%;
     height: 100%;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-    animation: slideout .8s;
+    animation: slideout 1.3s ease-out;
     z-index: 100;
 }
 @keyframes slidein {
-    from {left: 0;}
-    50% {left: 250px}
-    to {left: 557px}
+    from {
+        left: 0;
+        width: 39.5%;
+    }
+    25% {
+        left: 100px;
+        width: 50%
+    }
+    50% {
+        left: 150px;
+        width: 60%; 
+    }
+    75% {
+        left: 250px;
+        width: 50%;
+    }
+    to {
+        left: 60.5%;
+        width: 39.5%;
+    }
 }
 @keyframes slideout {
-    from {left: 557px;}
-    50% {left: 250px}
-    to {left: 0px}
+    from {
+        left: 60.5%;
+        width: 39.5%;
+    }
+    25% {
+        left: 250px;
+        width: 50%
+    }
+    50% {
+        left: 150px;
+        width: 60%; 
+    }
+    75% {
+        left: 100px;
+        width: 50%;
+    }
+    to {
+        left: 0;
+        width: 39.5%;
+    }
 }
-@keyframes disappear {
-    from {opacity: 0}
-    25% {opacity: .3}
-    50% {opacity: .5}
-    to {opacity: 1}
-}
-@keyframes appear {
-    from {opacity: 1}
-    25% {opacity: .5}
-    50% {opacity: .3}
-    to {opacity: 0}
-}
-.signin-js .content-first {
-    opacity: 0;
-}
+
 .first-column-signin {
-    flex: 1 0 auto;
+    flex: 2 0 auto;
+    position: relative;
+    left: 30%;
 }
 .signin {
     display: flex;
@@ -255,6 +290,14 @@ body {
 }
 .forgotpassword {
     text-align: center;
+    margin: 15px 0;
+}
+.forgotpassword a {
+    color: #34495e;
+    font-size: 14px;
+}
+.forgotpassword::first-letter {
+    text-transform: uppercase;
 }
 .second-column-greeting {
     flex: 1 0 auto;
